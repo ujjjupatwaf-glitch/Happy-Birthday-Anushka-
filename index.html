@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Happy Birthday Anushka 🎉</title><link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+text-align:center;
+overflow:auto;
+}
+
+/* Floating balloons & hearts */
+
+.balloon,.heart{
+position:fixed;
+bottom:-50px;
+font-size:25px;
+animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-110vh);opacity:0}
+}
+
+h1,h2{
+font-family:'Pacifico',cursive;
+}
+
+.page{
+min-height:100vh;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+/* Page colors */
+
+#page1{background:linear-gradient(135deg,#ff9ff3,#feca57);}
+#page2{background:white;}
+#page3{background:linear-gradient(135deg,#a29bfe,#6c5ce7);color:white;}
+#page4{background:linear-gradient(135deg,#ff9ff3,#feca57);}
+#page5{background:white;}
+
+/* Buttons */
+
+.buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-size:16px;
+background:white;
+color:#ff6b6b;
+cursor:pointer;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* Gallery */
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:180px;
+height:180px;
+border-radius:12px;
+object-fit:cover;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:transform .4s;
+}
+
+.gallery img:hover{
+transform:scale(1.15);
+}
+
+/* Flip cards */
+
+.cards{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:20px;
+}
+
+.card{
+width:200px;
+height:140px;
+perspective:1000px;
+cursor:pointer;
+}
+
+.inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .6s;
+transform-style:preserve-3d;
+}
+
+.card.flipped .inner{
+transform:rotateY(180deg);
+}
+
+.front,.back{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:15px;
+backface-visibility:hidden;
+}
+
+.front{
+background:#ff6b6b;
+color:white;
+font-size:20px;
+}
+
+.back{
+background:white;
+color:black;
+transform:rotateY(180deg);
+padding:10px;
+font-weight:600;
+}
+
+/* Cake */
+
+.cake{
+font-size:120px;
+cursor:pointer;
+transition:transform .5s;
+}
+
+.cut{
+transform:rotate(-20deg) scale(1.2);
+}
+
+/* Message */
+
+.message{
+max-width:600px;
+background:#ffeaa7;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Music selector */
+
+.music{
+margin-top:20px;
+}
+
+</style></head><body><!-- MUSIC PLAYER --><div class="music">
+<h3>🎵 Choose a Birthday Song</h3>
+<button onclick="playMusic('music1.mp3')">Song 1</button>
+<button onclick="playMusic('music2.mp3')">Song 2</button>
+<button onclick="playMusic('music3.mp3')">Song 3</button>
+</div><audio id="player" loop></audio>
+
+<!-- PAGE 1 --><div class="page active" id="page1"><h1>🎉 Hey Anushka 🎉</h1><p>I made something special for you...</p><div class="buttons">
+<button onclick="next()">Start Journey ➜</button>
+</div></div><!-- PAGE 2 --><div class="page" id="page2"><h2>Our Memories 📸</h2><div class="gallery"><img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg"></div><div class="buttons">
+<button onclick="prev()">⬅ Back</button>
+<button onclick="next()">Next ➜</button>
+</div></div><!-- PAGE 3 --><div class="page" id="page3"><h2>Why You're Amazing 💖</h2><div class="cards"><div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">Smile 😊</div>
+<div class="back">Your smile makes everything brighter.</div>
+</div>
+</div><div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">Kind ❤️</div>
+<div class="back">You always care about others.</div>
+</div>
+</div><div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">Fun 🎉</div>
+<div class="back">Life is more fun with you around.</div>
+</div>
+</div></div><div class="buttons">
+<button onclick="prev()">⬅ Back</button>
+<button onclick="next()">Next ➜</button>
+</div></div><!-- PAGE 4 --><div class="page" id="page4"><h2>Cut the Cake 🎂</h2><p>Click the cake</p><div class="cake" onclick="cutCake()" id="cake">🎂</div><div class="buttons">
+<button onclick="prev()">⬅ Back</button>
+<button onclick="next()">Next ➜</button>
+</div></div><!-- PAGE 5 --><div class="page" id="page5"><div class="message"><h2>Happy Birthday Anushka 🎉</h2><p>You are one of the most special people in my life.
+
+Thank you for always supporting me and being such an amazing first female friend.
+
+I hope this year brings you happiness, success and everything you dream of.
+
+</p><h3>Always cheering for you ❤️</h3><p style="margin-top:20px;font-weight:bold;">
+<span id="typing"></span>
+</p></div><div class="buttons">
+<button onclick="prev()">⬅ Back</button>
+</div></div><script>
+
+let page=1
+let total=5
+
+function show(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById("page"+n).classList.add("active")
+page=n
+
+if(n===5){
+startTyping()
+}
+}
+
+function next(){
+if(page<total) show(page+1)
+}
+
+function prev(){
+if(page>1) show(page-1)
+}
+
+function flip(card){
+card.classList.toggle("flipped")
+}
+
+/* Cake animation */
+
+function cutCake(){
+let cake=document.getElementById("cake")
+cake.classList.add("cut")
+alert("🎉 Happy Birthday Anushka 🎉")
+}
+
+/* Floating balloons & hearts */
+
+function createFloat(){
+
+let item=document.createElement("div")
+
+item.className=Math.random()>0.5?"balloon":"heart"
+
+item.innerHTML=Math.random()>0.5?"🎈":"💖"
+
+item.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(item)
+
+setTimeout(()=>item.remove(),8000)
+
+}
+
+setInterval(createFloat,900)
+
+/* Music player */
+
+function playMusic(song){
+
+let player=document.getElementById("player")
+
+player.src=song
+
+player.play()
+
+}
+
+/* Typing animation */
+
+const text="✨ This is private website made for you only <baut mehant laga hai yrr>. ✨"
+let i=0
+
+function startTyping(){
+
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i)
+i++
+setTimeout(startTyping,60)
+}
+
+}
+
+</script></body>
+</html>
